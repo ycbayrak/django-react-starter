@@ -22,8 +22,18 @@ module.exports = {
                 use: extractPlugin.extract({
                     use: ['css-loader', 'sass-loader']
                 })
+            },
+                        {
+                test: /\.sass$/,
+                use: extractPlugin.extract({
+                    use: ['css-loader', 'sass-loader']
+                })
             }
     ]
+  },
+  externals: {
+      "react": "React",
+      "react-dom": "ReactDOM"
   },
   plugins: [
         extractPlugin
