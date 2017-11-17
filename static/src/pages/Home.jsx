@@ -1,26 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Button, Fade } from 'reactstrap';
+import { Container } from 'reactstrap';
+import { slide as Menu } from 'react-burger-menu'
 
-import '../scss/milligram/milligram.sass';
+
 import './Home.scss';
 
-import Navbar from '../components/Navbar.jsx';
-import FeedBackForm from '../components/FeedbackForm.jsx';
+import Header from '../components/Navbar.jsx';
+import SideBar from '../components/SideBar.jsx';
+import Content from './Content.jsx';
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props)
-    console.log(props);
-  }
-  render() {
-    return (
-        <div className="Home">
-            <Navbar />
-            <h1>Hello {this.props.name}</h1>
-            <FeedBackForm />
-        </div>
-      );
-  }
+    constructor(props) {
+        super(props);
+        this.state = { fadeIn: true };
+        this.toggle = this.toggle.bind(this);
+    }
+
+    toggle() {
+        this.setState({
+            fadeIn: !this.state.fadeIn
+        });
+    }
+
+    render() {
+        return (
+            <div id="Home" className="Home">
+                <Menu id={'push'} pageWrapId="page-wrap" outerContainerId="Home">
+                    <SideBar />
+                </Menu>
+                <Container>
+                    <main id="page-wrap">
+                        <Content className="mt-30" />
+                    </main>
+                </Container>
+            </div>
+        );
+    }
 }
 
 ReactDOM.render(<Home name={window.props.name} />, document.getElementById('app'));

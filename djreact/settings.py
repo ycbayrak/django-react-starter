@@ -24,8 +24,7 @@ SECRET_KEY = 'b=t8s4=+h8kh!+-5b+2g(atcf2&=zx*vqu7@0*wht%r$y99)b1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -50,6 +49,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'djreact.urls'
+
+INTERNAL_IPS = (
+    '0.0.0.0',
+    '127.0.0.1',
+)
 
 TEMPLATES = [
     {

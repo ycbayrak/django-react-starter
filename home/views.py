@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 
+
 class HomeView(View):
     title = "Home View"
     component = "home"
@@ -9,6 +10,7 @@ class HomeView(View):
         props = {
             'name': 'Joseph'
         }
+        print(request.GET)
         return render(request, 'index.html', {
             'title': self.title,
             'component': self.component,
@@ -24,9 +26,9 @@ class AboutView(View):
         props = {
             'name': 'Joseph'
         }
+        print(request.GET)
         return render(request, 'index.html', {
             'title': self.title,
             'component': self.component,
             'props': props
         })
-
